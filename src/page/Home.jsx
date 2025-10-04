@@ -4,7 +4,7 @@ import { useAuth } from "../context/AuthProvider";
 export const Home = () => {
   const { isLoggedIn } = useAuth();
   return (
-    <main className=" min-h-screen overflow-hidden bg-[linear-gradient(to_bottom,rgba(0,0,0,0.9),rgba(0,0,0,0.3)),url('/netflix.jpg')] bg-cover bg-center flex items-center">
+    <main className=" min-h-screen overflow-hidden bg-[linear-gradient(to_right,rgba(0,0,0,0.9),rgba(0,0,0,0.7)),url('/netflix.jpg')] bg-cover bg-center flex items-center">
       <div className="px-6 lg:px-20 max-w-3xl text-left z-10">
         {!isLoggedIn ? (
           <Login />

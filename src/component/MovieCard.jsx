@@ -26,13 +26,7 @@ export const MovieCard = ({ movie }) => {
         </h1>
         <p className=" text-white text-xs">{movie.Year}</p>
 
-        <button
-          onClick={() => {
-            handleAddList(movie);
-            e.stopPropagation();
-          }}
-          className="mt-2 px-3 py-1 bg-red-600 rounded text-xs hover:bg-red-700"
-        >
+        <button className="mt-2 px-3 py-1 bg-red-600 rounded text-xs hover:bg-red-700">
           Stream Now
         </button>
       </div>

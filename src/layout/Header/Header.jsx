@@ -1,5 +1,6 @@
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthProvider";
+import { toast } from "react-toastify";
 
 export const Header = () => {
   const { isLoggedIn, setIsLoggedIn } = useAuth();
@@ -7,7 +8,10 @@ export const Header = () => {
 
   const handleLogout = () => {
     setIsLoggedIn(null);
+    toast.success("Logout Succesfully. ..")
     navigate("/");
+
+
   };
 
   const location = useLocation();
