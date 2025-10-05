@@ -3,7 +3,7 @@ import { api } from "../api/api";
 import { toast } from "react-toastify";
 
 // Thunk to fetch movies
-export const fetchMovies = createAsyncThunk("movies/fetchMovies", async ({ searchTerm, currentPage }, { rejectWithValue }) => {
+export const fetchMovies = createAsyncThunk("movies/fetchMovies", async ({ searchTerm, currentPage, searchFor }, { rejectWithValue }) => {
     const formattedTerm = searchTerm.trim().replace(/\s+/g, "+");
 
 
@@ -11,7 +11,7 @@ export const fetchMovies = createAsyncThunk("movies/fetchMovies", async ({ searc
       const { data } = await api.get(
         `/?apikey=${
           import.meta.env.VITE_OMDB_KEY
-        }&type=movie&s=${formattedTerm}&page=${currentPage}`
+        }&type=${searchFor}&s=${formattedTerm}&page=${currentPage}`
       );
 
       if (data.Response === "False") {

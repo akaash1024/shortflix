@@ -47,9 +47,9 @@ export const Header = () => {
                   </button>
                 </div>
               </NavLink>
-              <div className=" bg-red-700 rounded-sm flex items-center justify-center cursor-pointer p-1">
+              <div className=" bg-red-500 text-white border-red-500 rounded-sm flex items-center justify-center cursor-pointer p-1">
                 <button
-                  className="text-white hover:text-red-500 transition-colors"
+                  className="text-white hover:text-white transition-colors"
                   onClick={handleLogout}
                 >
                   Sign out
@@ -57,8 +57,8 @@ export const Header = () => {
               </div>
             </>
           ) : (
-            <div className=" bg-red-700 rounded-sm flex items-center justify-center cursor-pointer p-1">
-              <button className="text-white hover:text-red-500 transition-colors">
+            <div className=" bg-red-500 text-white border-red-500 rounded-sm flex items-center justify-center cursor-pointer p-1">
+              <button className="text-white hover:text-white-500 transition-colors">
                 Sign In
               </button>
             </div>

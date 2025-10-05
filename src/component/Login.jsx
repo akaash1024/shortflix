@@ -40,20 +40,20 @@ export const Login = () => {
   };
 
   return (
-    <section className="h-[22rem] w-96 bg-[rgba(4,2,1,0.8)] rounded-md shadow-lg flex items-center justify-center">
+    <section className="h-[22rem] w-96 bg-[rgba(4,2,1,0.6)] rounded-md shadow-lg flex items-center justify-center">
       <div className="px-6 py-6 w-full">
         <h1 className="text-white text-3xl mb-6 font-semibold">Sign-In</h1>
 
         <form onSubmit={handleLoginSubmit} className="space-y-4">
           <div className="flex flex-col border border-gray-600 rounded-md p-2">
-            <label className="text-white mb-1" htmlFor="email">
+            <label className="text-gray-400 mb-1 text-sm" htmlFor="email">
               Email
             </label>
             <input
               type="email"
               id="email"
               name="email"
-              className=" px-2 bg-transparent text-white outline-none placeholder-gray-400 focus:ring-2 focus:ring-red-400 focus:border-red-400 rounded-sm"
+              className=" px-2 bg-transparent text-white outline-none  rounded-sm"
               placeholder="Enter your email"
               value={formData.email}
               onChange={handleFormDataChange}
@@ -61,14 +61,14 @@ export const Login = () => {
           </div>
 
           <div className="flex flex-col border border-gray-600 rounded-md p-2">
-            <label className="text-white mb-1" htmlFor="password">
+            <label className="text-gray-400 mb-1 text-sm" htmlFor="password">
               Password
             </label>
             <input
               type="password"
               id="password"
               name="password"
-              className="px-2 bg-transparent text-white outline-none placeholder-gray-400 focus:ring-2 focus:ring-red-400 focus:border-red-400 rounded-sm"
+              className="px-2 bg-transparent text-white outline-none placeholder-gray-400 focus:ring-2 rounded-sm"
               placeholder="Enter your password"
               value={formData.password}
               onChange={handleFormDataChange}

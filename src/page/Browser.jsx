@@ -1,15 +1,21 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useAuth } from "../context/AuthProvider";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Pagination } from "../component/Pagination";
 import { MovieCard } from "../component/MovieCard";
 import { fetchMovies } from "../features/moviesSlice";
-import { toast } from "react-toastify";
 
 
 export const Browser = () => {
-  const { setSearchTerm, searchTerm, currentPage, setCurrentPage } = useAuth();
+  const {
+    setSearchTerm,
+    searchTerm,
+    currentPage,
+    setCurrentPage,
+    searchFor,
+    setSearchFor,
+  } = useAuth();
 
   let { moviesList, error } = useSelector((state) => state.movies);
 
@@ -17,20 +23,18 @@ export const Browser = () => {
 
   useEffect(() => {
     if (searchTerm.trim()) {
-      dispatch(fetchMovies({ currentPage, searchTerm }));
+      dispatch(fetchMovies({ currentPage, searchTerm, searchFor }));
     }
-  }, []); 
-
-
+  }, []);
 
   useEffect(() => {
     moviesList = [];
     const timer = setTimeout(() => {
-      dispatch(fetchMovies({ currentPage, searchTerm }));
+      dispatch(fetchMovies({ currentPage, searchTerm, searchFor }));
     }, 500);
 
     return () => clearTimeout(timer);
-  }, [searchTerm, currentPage, dispatch]);
+  }, [searchTerm, currentPage, dispatch, searchFor]);
 
   return (
     <div className=" min-h-screen overflow-hidden bg-[#181818] p-6">
@@ -50,7 +54,7 @@ export const Browser = () => {
         <div className="mr-24 relative">
           <input
             type="search"
-            value={searchTerm }
+            value={searchTerm}
             onChange={(e) => {
               setSearchTerm(e.target.value);
               setCurrentPage(1);
@@ -59,6 +63,28 @@ export const Browser = () => {
             className="w-72 rounded-full bg-[#333] px-4 py-2 pl-10 text-white placeholder-gray-400 
                focus:outline-none focus:ring-2 focus:ring-red-500 transition duration-200"
           />
+
+          <div className="flex gap-2 p-4">
+            {["movie", "series"].map((status) => (
+              <div className="flex">
+                
+                <button
+                  type="button"
+                  key={status}
+                  onClick={() => setSearchFor(status)}
+                  className={`px-3 py-1 rounded-full text-sm border transition-colors 
+                    ${
+                      searchFor.includes(status)
+                        ? "bg-red-500 text-white border-red-500"
+                        : "bg-white text-gray-700 border-gray-300 hover:border-red-500"
+                    }`}
+                >
+                  
+                  {status.toUpperCase()}
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 

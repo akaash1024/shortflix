@@ -8,7 +8,7 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const storageKey = "userDB";
   const loginKey = "isLoggedIn";
-
+const [searchFor, setSearchFor] = useState("movie");
   const [isLoggedIn, setIsLoggedIn] = useState(
     JSON.parse(localStorage.getItem(loginKey)) || null
   );
@@ -81,6 +81,8 @@ export const AuthProvider = ({ children }) => {
     setCurrentPage,
     loginKey,
     handleAddList,
+    searchFor,
+    setSearchFor,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
